@@ -217,9 +217,11 @@ install_protobuf_from_source(){
     #tar -xzvf protobuf-2.6.1.tar.gz --owner $USER --group $USER --no-same-owner
     #cd protobuf-2.6.1/
     rm -rf /tmp/protobuf-cpp-3.3.0.tar.gz* /tmp/protobuf-3.3.0
-    wget https://github.com/google/protobuf/releases/download/v3.3.0/protobuf-cpp-3.3.0.tar.gz
-    tar -xzvf protobuf-cpp-3.3.0.tar.gz --owner $USER --group $(groups | cut -d" " -f1) --no-same-owner
-    cd protobuf-3.3.0/
+    #wget https://github.com/google/protobuf/releases/download/v3.3.0/protobuf-cpp-3.3.0.tar.gz
+    wget https://openair.bj.bcebos.com/protobuf-cpp-3.3.0.tar.gz -P /tmp
+    #tar -xzvf protobuf-cpp-3.3.0.tar.gz --owner $USER --group $(groups | cut -d" " -f1) --no-same-owner
+    tar -xzvf /tmp/protobuf-cpp-3.3.0.tar.gz -C /tmp
+    cd /tmp/protobuf-3.3.0/
     ./configure
     echo "Compiling protobuf"
     make -j`nproc`
